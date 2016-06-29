@@ -1,0 +1,4 @@
+    64: 08048440    95 FUNC    GLOBAL DEFAULT   13 myllimulfunc 
+    64: 08048446    45 FUNC    GLOBAL DEFAULT   13 myxorfunc 
+    66: 080483c4    64 FUNC    GLOBAL DEFAULT   13 mymulfunc
+    72: 08048402    62 FUNC    GLOBAL DEFAULT   13 myaddfunc

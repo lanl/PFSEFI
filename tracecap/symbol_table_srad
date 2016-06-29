@@ -1,0 +1,8 @@
+    50: 08048e00   340 FUNC    LOCAL  DEFAULT   13 main.omp_fn.1
+    51: 08048f60   553 FUNC    LOCAL  DEFAULT   13 main.omp_fn.0
+    58: 08048ac0   309 FUNC    GLOBAL DEFAULT   13 read_graphics
+    80: 08048950   309 FUNC    GLOBAL DEFAULT   13 resize
+    82: 08049e50    90 FUNC    GLOBAL DEFAULT   13 __libc_csu_init
+    89: 08048a90    42 FUNC    GLOBAL DEFAULT   13 get_time
+    94: 08048c00   510 FUNC    GLOBAL DEFAULT   13 write_graphics
+    98: 08049190  3242 FUNC    GLOBAL DEFAULT   13 main

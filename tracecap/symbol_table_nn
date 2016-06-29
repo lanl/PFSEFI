@@ -1,0 +1,3 @@
+    50: 08049089   301 FUNC    LOCAL  DEFAULT   13 main.omp_fn.0
+    77: 080491d0    90 FUNC    GLOBAL DEFAULT   13 __libc_csu_init
+    96: 080489c4  1733 FUNC    GLOBAL DEFAULT   13 main

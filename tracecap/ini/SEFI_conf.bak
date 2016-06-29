@@ -1,0 +1,143 @@
+; Configuration file for SEFI
+[general]
+
+; set to 'yes', if 'fadd' type is allowed to inject. 
+; Default : yes
+SEFI_support_fault_fadd = yes
+
+; set to 'yes', if 'fmul' type is allowed to inject 
+; Default : yes
+SEFI_support_fault_fmul = yes
+
+; set to 'yes', if 'cmp' type is allowed to inject 
+; Default : yes
+SEFI_support_fault_cmp = yes
+
+; set to 'yes', if 'xor' type is allowed to inject 
+; Default : yes
+SEFI_support_fault_xor = yes
+
+; set to 'yes', if 'sarl' type is allowed to inject 
+; Default : yes
+SEFI_support_fault_sarl = yes
+
+; set to 'yes', if 'idivl' type is allowed to inject 
+; Default : yes
+SEFI_support_fault_idivl = yes
+
+
+; The range of bits that are available to flip (based on 64 bits register)
+; Default : 52-62
+; Format : 52-62 (Only inject faults into the exponent area)
+SEFI_support_range_start = 26
+SEFI_support_range_end = 62
+; For graph500, BMM  only configuration
+;SEFI_support_range_of_bits_to_flip = 26-31  
+; The baseline (every bit is equal to the bit flip)
+;SEFI_suppport_range_of_bits_to_flip = 0-63 
+;SEFI_suppport_range_of_bits_to_flip = 0-7
+
+; integer that less sizeof bit_range
+; Example: if SEF_support_sub_bit_range is set 52-62, then it cannot set larger than 11
+;          We will validate it in the program. And if the number exceeds the sizeof range, number 
+;          will be set as the sizeof range
+; Default : 1
+SEFI_support_number_of_bits_to_flip = 1 
+
+; integer of probability of faults
+; Example: if SEFI_support_fault_probability is set 100, then fault is going to be inject with 
+;          100 percentages. 0 is not accepted
+; Defautl : 100 (integer from 1 to 100)
+SEFI_support_fault_probability = .0001
+
+
+; integer index of the start of fadd opes, where the injector will inject faults
+; Default : 0
+; Example : 0 (the inject will inject fault from the first Fadd)
+SEFI_support_start_index_fadd = 0
+
+; integer index of the start of fmul opes, where the injector will inject faults
+; Default : 0
+; Example : 0 (the inject will inject fault from the first fmul)
+SEFI_support_start_index_fmul = 0
+
+; integer index of the start of cmp opes, where the injector will inject faults
+; Default : 0
+; Example : 0 (the inject will inject fault from the first cmp)
+SEFI_support_start_index_cmp = 0
+
+; integer index of the start of xor opes, where the injector will inject faults
+; Default : 0
+; Example : 0 (the inject will inject fault from the first xor)
+SEFI_support_start_index_xor = 0
+
+; integer index of the start of sarl opes, where the injector will inject faults
+; Default : 0
+; Example : 0 (the inject will inject fault from the first sarl)
+SEFI_support_start_index_sarl = 0
+
+; integer index of the start of idivl opes, where the injector will inject faults
+; Default : 0
+; Example : 0 (the inject will inject fault from the first sarl)
+SEFI_support_start_index_idivl = 0
+
+
+
+; integer max dynmic instructions that we care
+; defualt : 1
+; Example : 100 (the injection be randomly chosen from 1st dynmaic instruction to 100th dynamic instruction
+; Heapsort
+;SEFI_support_max_dic = 1800	
+;SEFI_support_max_dic = 29000
+;SEFI_support_max_dic = 390800
+; Mergesort
+;SEFI_support_max_dic = 2800	
+;SEFI_support_max_dic = 41880	
+;SEFI_support_max_dic = 553740	
+; Quicksort
+;SEFI_support_max_dic = 2100
+;SEFI_support_max_dic = 31400	
+;SEFI_support_max_dic = 372900	
+; Binary_GCD
+SEFI_support_max_dic = 3
+; SRAD (fadd, fmul, cmp, sarl) for main.omp_fn.1
+;SEFI_support_max_dic = 91960000		
+;SEFI_support_max_dic = 137949600	
+;SEFI_support_max_dic = 23038600
+;SEFI_support_max_dic = 400
+[host configuration]
+; symbol_table for subroutine injection
+; SEFI_host_sym_table_directory = /home/guanxyz/LANL_Work/TEMU/temu-1.0/tracecap/symbol_table_bmm
+; SEFI_host_sym_table_directory = /home/guanxyz/LANL_Work/TEMU/temu-1.0/tracecap/symbol_table_graph
+; SEFI_host_sym_table_directory = /home/guanxyz/LANL_Work/TEMU/temu-1.0/tracecap/symbol_table_kmeans
+;SEFI_host_sym_table_directory = /home/guanxyz/LANL_Work/TEMU/temu-1.0/tracecap/symbol_table_fft1d
+;SEFI_host_sym_table_directory = tracecap/symbol_table_foo
+;SEFI_host_sym_table_directory = tracecap/symbol_table_nn
+;SEFI_host_sym_table_directory = tracecap/symbol_table_kmeans
+;SEFI_host_sym_table_directory = tracecap/symbol_table_srad
+;SEFI_host_sym_table_directory = tracecap/symbol_table_bubblesort
+;SEFI_host_sym_table_directory = tracecap/symbol_table_heapsort
+;SEFI_host_sym_table_directory = tracecap/symbol_table_heapsort_all
+;SEFI_host_sym_table_directory = tracecap/symbol_table_qsort
+;SEFI_host_sym_table_directory = tracecap/symbol_table_mergesort
+;SEFI_host_sym_table_directory = tracecap/symbol_table_sorttest
+;SEFI_host_sym_table_directory = tracecap/symbol_table_binarygcd
+;SEFI_host_sym_table_directory = tracecap/symbol_table_eucgcd
+;SEFI_host_sym_table_directory = tracecap/symbol_table_clamr
+;SEFI_host_sym_table_directory = tracecap/symbol_table_foo0
+SEFI_host_sym_table_directory = tracecap/symbol_table_matrixmultiply
+
+
+
+; User name on host
+SEFI_host_user = guanxyz
+
+; target directory for output files on host(output file is transfered from host)
+SEFI_host_target_directory = /home/guanxyz/output/
+
+; Host IP
+SEFI_host_ip = 10.0.35.81
+
+ 
+
+
