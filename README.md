@@ -1,108 +1,59 @@
-# PFSEFI
-Parallel Fine-grained Soft Error Fault Injector
+# Parallel Fine-grained Soft Error Fault Injector (P-FSEFI)
 
-
-# Vector Particle-In-Cell (VPIC) Project
-
-VPIC is a general purpose particle-in-cell simulation code for modeling
-kinetic plasmas in one, two, or three spatial dimensions. It employs a
-second-order, explicit, leapfrog algorithm to update charged particle
-positions and velocities in order to solve the relativistic kinetic
-equation for each species in the plasma, along with a full Maxwell
-description for the electric and magnetic fields evolved via a second-
-order finite-difference-time-domain (FDTD) solve. The VPIC code has been
-optimized for modern computing architectures and uses Message Passing
-Interface (MPI) calls for multi-node application as well as data
-parallelism using pthreads. VPIC employs a variety of short-vector,
-single-instruction-multiple-data (SIMD) intrinsics for high performance
-and has been designed so that the data structures align with cache
-boundaries. The current feature set for VPIC includes a flexible input
-deck format capable of treating a wide variety of problems. These
-include: the ability to treat electromagnetic materials (scalar and
-tensor dielectric, conductivity, and diamagnetic material properties);
-multiple emission models, including user-configurable models; arbitrary,
-user-configurable boundary conditions for particles and fields; user-
-definable simulation units; a suite of "standard" diagnostics, as well
-as user-configurable diagnostics; a Monte-Carlo treatment of collisional
-processes capable of treating binary and unary collisions and secondary
-particle generation; and, flexible checkpoint-restart semantics enabling
-VPIC checkpoint files to be read as input for subsequent simulations.
-VPIC has a native I/O format that interfaces with the high-performance
-visualization software Ensight and Paraview. While the common use cases
-for VPIC employ low-order particles on rectilinear meshes, a framework
-exists to treat higher-order particles and curvilinear meshes, as well
-as more advanced field solvers.
+P-FSEFI builds upon F-SEFI, the sequential fault injection tool and used to study a number of applications. This extension adds support for injecting faults into parallel applications, something vitally important to advance
+the original tool to be useful to the high performance computing
+(HPC) and supercomputing field. P-FSEFI allows
+multiple F-SEFI instances to be connected. They can be on the
+same physical host or multiple, different physical hosts. A parallel
+program, such as an MPI program, is then run within this collection
+of F-SEFI instances. This program communicates outside of
+theVMand into other F-SEFIVMinstances as it passes data to perform
+a parallel calculation. This capability is what makes P-FSEFI unique and extensible to allow one to emulate a parallel process
+running on a virtual cluster. 
 
 # Attribution
 
-Researchers who use the VPIC code for scientific research are asked to cite
-the papers by Kevin Bowers listed below.
+Researchers who use the P-FSEFI for scientific research are asked to cite
+the papers by Qiang Guan listed below.
 
-1. Bowers, K. J., B. J. Albright, B. Bergen, L. Yin, K. J. Barker and
-D. J. Kerbyson, "0.374 Pflop/s Trillion-Particle Kinetic Modeling of
-Laser Plasma Interaction on Road-runner," Proc. 2008 ACM/IEEE Conf.
-Supercomputing (Gordon Bell Prize Finalist Paper).
-http://dl.acm.org/citation.cfm?id=1413435
+1. Qiang Guan, Nathan BeBardeleben, Panruo Wu, Stephan Eidenbenz,
+Sean Blanchard, Laura Monroe, Elisabeth Baseman, and Li Tan, "Design, Use and Evaluation of P-FSEFI: A Parallel Soft
+Error Fault Injection Framework for Emulating Soft Errors
+in Parallel Applications" in Ninth EAI International Conference on Simulation Tools and Techniques (SIMTOOLS), 2016.
 
-2. K.J. Bowers, B.J. Albright, B. Bergen and T.J.T. Kwan, Ultrahigh
-performance three-dimensional electromagnetic relativistic kinetic
-plasma simulation, Phys. Plasmas 15, 055703 (2008);
-http://dx.doi.org/10.1063/1.2840133
+2. Qiang Guan, Nathan Debardeleben, Sean Blanchard, Song Fu, "f-sefi: A fine-grained soft error fault injection tool for profiling application vulnerability," Proc. of 2014 IEEE 28th International Parallel and Distributed Processing Symposium (IPDPS), 2014.
+http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6877352&tag=1
 
-3. K.J. Bowers, B.J. Albright, L. Yin, W. Daughton, V. Roytershteyn,
-B. Bergen and T.J.T Kwan, Advances in petascale kinetic simulations
-with VPIC and Roadrunner, Journal of Physics: Conference Series 180,
-012055, 2009
+3. Nathan DeBardeleben, Sean Blanchard, Qiang Guan, Ziming Zhang, Song Fu, "Experimental framework for injecting logic errors in a virtual machine to profile applications for soft error resilience", In Proc. of Euro-Par'11 Proceedings of the 2011 international conference on Parallel Processing - Volume 2
+Pages 282-291, 2011.
+http://dl.acm.org/citation.cfm?id=2238472
+
 
 # Getting the Code
 
-VPIC uses nested submodules.  This requires the addition of the *--recursive*
-flag when cloning the repository:
+P-FSEFI is built upon the QEMU and TEMU, the dynamic analysis tool. You have to first check out the TEMU source code and apply the patch and then copy the new tracecap folder under the TEMU home directory.
 
-    % git clone --recursive git@github.com:losalamos/vpic.git
+    % $ wget http://bitblaze.cs.berkeley.edu/release/temu-1.0/temu-1.0.tar.gz
+    % $ tar zxvf temu-1.0.tar.gz
+    % $ cd temu-1.0
+    % $ git clone https://github.com/losalamos/PFSEFI.git
+    % $ patch -R -p1 < PFSEFI/pfsefi.patch
+    % $ cp -r PFSEFI/tracecap .
 
-This command will check out the VPIC source code, including the Cinch
-build system.  Cinch is documented
-[here](https://github.com/losalamos/cinch).
+These commands download source code and patch P-FSEFI functions. For more information about TEMU please check 
+[here](http://bitblaze.cs.berkeley.edu/temu.html).
 
 # Requirements
 
-The primary requirement to build VPIC is a C++11 capable compiler and
-an up-to-date version of MPI.
+P-FSEFI has been fully tested on 64-bits Ubuntu 12.04 system. And P-FSEFI only support 32-bits Linux system as the guest.
 
 # Build Instructions
 
-VPIC uses the Cinch build system.  From a user-perspective, this is
-equivalent to CMake.  To configure a build, do the following from
-the top-level source directory:
+To configure and build, do the following from the top-level source directory:
   
-    % mkdir build
-    % cd build
-
-Then call the curses version of CMake:
-
-    % ccmake ..
-
-**or, optionally:**
-
-    % cmake -DENABLE_MPI ..
-
-After configuration, simply type 'make'.
-
-# Building an example input deck
-
-After you have successfully built VPIC, you should have an executable in
-the *bin* directory called *vpic*.  To build an executable from one of
-the sample input decks, simply run:
-
-    % bin/vpic input_deck
-
-where *input_deck* is the name of your sample deck.  For example, to build
-the *harris* input deck in the *sample* subdirectory
-*(assuming that your build directory is located in the top-level
-source directory)*:
-
-    % bin/vpic ../sample/harris
+    % ./configure --target-list=i386-softmmu --proj-name=tracecap --prefix=$(pwd)/install --disable-gcc-check 
+    % make clean 
+    % make 
 
 # Release
 
