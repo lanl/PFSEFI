@@ -59,6 +59,17 @@ To configure and build, do the following from the top-level source directory:
     % make clean 
     % make 
 
+# Docker Support
+
+P-SEFI supports Docker container. You can either use the Dockerfile to build the conatainer image.
+    % docker build -t pfsefi .
+    
+You can also directly pull the docker container image from dockerhub
+    % docker pull guanxyz/pfsefi
+    
+The container can be started by 
+    % docker run -it guanxyz/pfsefi /bin/bash
+
 # Release
 
 This software has been approved for open source release and has been assigned **LA-CC-16-004**.
