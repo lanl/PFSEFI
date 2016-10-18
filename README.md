@@ -33,16 +33,16 @@ http://dl.acm.org/citation.cfm?id=2238472
 
 P-FSEFI is built upon the QEMU and TEMU, the dynamic analysis tool. You have to first check out the TEMU source code and apply the patch and then copy the new tracecap folder under the TEMU home directory. You must install git lfs in your local system pelase check https://git-lfs.github.com 
 
-    % $ wget http://bitblaze.cs.berkeley.edu/release/temu-1.0/temu-1.0.tar.gz
-    % $ tar zxvf temu-1.0.tar.gz
-    % $ cd temu-1.0
-    % $ git clone https://github.com/losalamos/PFSEFI.git
-    % $ patch -R -p1 < PFSEFI/pfsefi.patch
-    % $ git lfs install ## you must install the git lfs because the patch file size is too big
-    % $ git lfs track "*.patch"
-    % $ git lfs checkout
-    % $ git lfs fetch
-    % $ cp -r PFSEFI/tracecap .
+     $ wget http://bitblaze.cs.berkeley.edu/release/temu-1.0/temu-1.0.tar.gz
+     $ tar zxvf temu-1.0.tar.gz
+     $ cd temu-1.0
+     $ git clone https://github.com/losalamos/PFSEFI.git
+     $ patch -R -p1 < PFSEFI/fsefi.patch
+     $ git lfs install ## you must install the git lfs because the patch file size is too big
+     $ git lfs track "*.patch"
+     $ git lfs checkout
+     $ git lfs fetch
+     $ cp -r PFSEFI/tracecap .
 
 These commands download source code and patch P-FSEFI functions. For more information about TEMU please check 
 [here](http://bitblaze.cs.berkeley.edu/temu.html).
