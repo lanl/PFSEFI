@@ -37,7 +37,7 @@ P-FSEFI is built upon the QEMU and TEMU, the dynamic analysis tool. You have to 
      $ tar zxvf temu-1.0.tar.gz
      $ cd temu-1.0
      $ git clone https://github.com/losalamos/PFSEFI.git
-     $ patch -R -p1 < PFSEFI/fsefi.patch
+     $ patch  -p1 < PFSEFI/fsefi.patch
      $ git lfs install ## you must install the git lfs because the patch file size is too big
      $ git lfs track "*.patch"
      $ git lfs checkout
