@@ -71,7 +71,7 @@ You can also directly pull the docker container image from dockerhub
     
 The container can be started by 
 
-    % docker run -it guanxyz/pfsefi /bin/bash
+    % docker run --net=host -it guanxyz/pfsefi /bin/bash
 
 # Release
 
