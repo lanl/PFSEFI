@@ -61,11 +61,6 @@ P-FSEFI is built upon the QEMU and TEMU, the dynamic analysis tool. You have to 
      $ cd ..
      $ rm -r /home/user/temu-1.0
 
-## Compile and build 
-     $ cd /home/user/pfsefi
-     $ ./configure --target-list=i386-softmmu --proj-name=tracecap --prefix=$(pwd)/install --disable-gcc-check --cc=gcc-4.6
-     $ make clean; make
-
 These commands download source code and patch P-FSEFI functions. For more information about TEMU please check 
 [here](http://bitblaze.cs.berkeley.edu/temu.html).
 
