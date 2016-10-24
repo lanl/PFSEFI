@@ -59,6 +59,7 @@ RUN bash script.deb.sh
 RUN rm script.deb.sh
 RUN apt-get -y install git-lfs
 
+RUN apt-get -y install net-tools
 # Download PFSEFI to local directory
 WORKDIR /home/user
 RUN git clone https://github.com/losalamos/PFSEFI.git
