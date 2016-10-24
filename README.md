@@ -40,7 +40,7 @@ P-FSEFI is built upon the QEMU and TEMU, the dynamic analysis tool. You have to 
      $ rm script.deb.sh
      $ apt-get -y install git-lfs
 
-# Download PFSEFI
+# Download PFSEFI and patch the code
      $ cd /home/user   ## assume your user name is user
      $ git clone https://github.com/losalamos/PFSEFI.git
      $ cd /home/user/PFSEFI
@@ -48,8 +48,6 @@ P-FSEFI is built upon the QEMU and TEMU, the dynamic analysis tool. You have to 
      $ git lfs track "*.patch"
      $ git lfs fetch
      $ git lfs checkout
- 
- # Patch the code
      $ mkdir /home/user/pfsefi
      $ cd /home/user
      $ wget http://bitblaze.cs.berkeley.edu/release/temu-1.0/temu-1.0.tar.gz
