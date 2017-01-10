@@ -53,9 +53,8 @@ P-FSEFI is built upon the QEMU and TEMU, the dynamic analysis tool. You have to 
      $ wget http://bitblaze.cs.berkeley.edu/release/temu-1.0/temu-1.0.tar.gz
      $ tar zxvf temu-1.0.tar.gz
      $ cd temu-1.0
-     $ git clone https://github.com/losalamos/PFSEFI.git
-     $ patch  -p1 < PFSEFI/fsefi.patch
-     $ cp -r ./* /home/user/pfsefi/
+     $ patch  -p1 < ~/PFSEFI/fsefi.patch
+     $ cp -r ./* ~/pfsefi/
      $ cd ..
      $ rm -r /home/user/temu-1.0
 
