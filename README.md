@@ -97,17 +97,22 @@ This software has been approved for open source release and has been assigned **
 For bugs and problems report, suggestions and other general questions regarding the PFSEFI project, Please subscribe to the [fsefi-users mailing list](https://groups.google.com/forum/#!forum/fsefi-user-discussion)(via Google Groups) and post your quesitons. 
 
 # Troubleshooting
-
-1. You may have to downgrade the gcc version for example, gcc-4.4.
+1.You may have to downgrade the gcc version for example, gcc-4.4.
+     
      % sudo vim  /etc/apt/sources.list
-   Add the following two lines in sources.list
+
+Add the following two lines in sources.list
+     
      deb http://dk.archive.ubuntu.com/ubuntu/ trusty main universe
      deb http://dk.archive.ubuntu.com/ubuntu/ trusty-updates main universe
-   Then install gcc-4.4
+   
+Then install gcc-4.4
+     
      % sudo apt-get update
      % sudo apt-get install gcc-4.4
      
-2. You may have to install git-lfs.
+2.Antoher way to install git-lfs.
+     
      % curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
      % sudo apt-get install git-lfs
 
