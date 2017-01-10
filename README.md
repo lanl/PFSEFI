@@ -41,22 +41,22 @@ P-FSEFI is built upon the QEMU and TEMU, the dynamic analysis tool. You have to 
      $ apt-get -y install git-lfs
 
 # Download PFSEFI and patch the code
-     $ cd /home/user   ## assume your user name is user
+     $ cd ~    
      $ git clone https://github.com/losalamos/PFSEFI.git
-     $ cd /home/user/PFSEFI
+     $ cd ~/PFSEFI
      $ git lfs install
      $ git lfs track "*.patch"
      $ git lfs fetch
      $ git lfs checkout
-     $ mkdir /home/user/pfsefi
-     $ cd /home/user
+     $ mkdir ~/pfsefi
+     $ cd ~
      $ wget http://bitblaze.cs.berkeley.edu/release/temu-1.0/temu-1.0.tar.gz
      $ tar zxvf temu-1.0.tar.gz
      $ cd temu-1.0
      $ patch  -p1 < ~/PFSEFI/fsefi.patch
      $ cp -r ./* ~/pfsefi/
      $ cd ..
-     $ rm -r /home/user/temu-1.0
+     $ rm -r ~/temu-1.0
 
 These commands download source code and patch P-FSEFI functions. For more information about TEMU please check 
 [here](http://bitblaze.cs.berkeley.edu/temu.html).
