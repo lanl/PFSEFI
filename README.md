@@ -70,7 +70,8 @@ P-FSEFI has been fully tested on 64-bits Ubuntu 12.04 system. And P-FSEFI only s
 To configure and build, do the following from the top-level source directory:
   
     % cd /home/user/pfsefi
-    % ./configure --target-list=i386-softmmu --proj-name=tracecap --prefix=$(pwd)/install --disable-gcc-check 
+    % cp ~/PFSEFI/install-fsefi.sh .
+    % bash install-fsefi.sh
     % make clean 
     % make 
 
